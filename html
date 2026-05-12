@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .skill-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+        }
+        .animate-progress {
+            animation: progressAnimation 2s ease-in-out forwards;
+        }
+        @keyframes progressAnimation {
+            from { width: 0; }
+            to { width: var(--width); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-primary">Portfolio<span class="text-secondary">.</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('home')" class="text-gray-600 hover:text-primary font-medium">Home</button>
+                    <button onclick="scrollToSection('about')" class="text-gray-600 hover:text-primary font-medium">About</button>
+                    <button onclick="scrollToSection('skills')" class="text-gray-600 hover:text-primary font-medium">Skills</button>
+                    <button onclick="scrollToSection('projects')" class="text-gray-600 hover:text-primary font-medium">Projects</button>
+                    <button onclick="scrollToSection('contact')" class="text-gray-600 hover:text-primary font-medium">Contact</button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="scrollToSection('home')" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary">Home</button>
+                <button onclick="scrollToSection('about')" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary">About</button>
+                <button onclick="scrollToSection('skills')" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary">Skills</button>
+                <button onclick="scrollToSection('projects')" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary">Projects</button>
+                <button onclick="scrollToSection('contact')" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Hi, I'm <span class="text-yellow-300">PAUL NDUNGE KIOKO</span><br>
+                        <span class="text-2xl md:text-3xl">Web Developer & a Data analyst</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-blue-100 max-w-lg">
+                        I create beautiful, functional websites that help businesses grow and succeed in the digital world.</p>
+                        <p class="mt-6 text-lg text-blue-100 max-w-lg">
+                        In data analytics i help in analyzing business data coming up with reports and interactive dashboards for business decision making and Management.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <button onclick="scrollToSection('projects')" class="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                            View My Work
+                        </button>
+                        <button onclick="scrollToSection('contact')" class="border-2 border-white text-white hover:bg-white hover:text-primary font-bold py-3 px-8 rounded-full transition duration-300">
+                            Contact Me
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="https://uploads.onecompiler.io/43fvf8z9y/44nxhqf89/1778521653879.png" alt="Profile Image" class="w-80 h-80 sm:w-96 sm:h-96 md:w-full md:max-w-md object-cover rounded-full shadow-2xl border-4 border-white">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark">About Me</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4">Who I Am</h3>
+                    <p class="text-gray-600 mb-4">
+                       I am a Financial Engineering student and Data Analyst dedicated to transforming complex datasets into clear, actionable financial strategies. 
+                       My work sits at the intersection of high-level finance and technical development, bridging the gap between raw numbers and executive decision-making.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        I specialize in "analyzing" large-scale data—such as government expenditures and cash flow metrics—and translating them into intuitive,
+                        visual stories. Using a toolkit that includes Power BI (DAX), Excel, and C programming, I build professional-grade dashboards that help
+                        organizations monitor budget absorption and forecast future liquidity with precision.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                      Beyond the numbers, I am a trained website developer. This allows me to not only analyze data but also build the digital infrastructure
+                      to host and communicate those insights effectively. Whether I am modeling financial risks or designing a responsive web platform,
+                      my goal is the same: to deliver technical excellence and operational clarity.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Data visualization</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Full-stack website Development</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Interactive Dashboard Design</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Financial modeling & forecasting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-100 rounded-2xl p-8">
+                        <h3 class="text-2xl font-semibold mb-6">My Academic Journey</h3>
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="mr-4">
+                                    <div class="w-4 h-4 bg-primary rounded-full"></div>
+                                </div>
+                                <div class="pb-6">
+                                    <h4 class="font-semibold text-lg">Education</h4>
+                                    <p class="text-gray-600">Ongoing B.Sc Financial Engineering<br>Kirinyaga University(2025-2029)</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="mr-4">
+                                    <div class="w-4 h-4 bg-primary rounded-full"></div>
+                                </div>
+                                <div class="pb-6">
+                                    <h4 class="font-semibold text-lg">Experience</h4>
+                                    <p class="text-gray-600">No corporate Experience but have build my own projects.<br>
+                                </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark">My Skills</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Technical Expertise</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">HTML/CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar" style="--width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Power BI & DAX</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar" style="--width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Microsoft Excel</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar" style="--width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">C programming</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar" style="--width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">SQL</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar" style="--width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Professional Skills</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <div class="text-3xl text-primary mb-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg mb-2">Data Storytelling</h4>
+                            <p class="text-gray-600">Translating complex financial datasets into clear, visual narratives that drive informed decision-making.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <div class="text-3xl text-primary mb-3">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg mb-2">Strategic Planning</h4>
+                            <p class="text-gray-600">Utilizing forecasting and trend analysis to align financial resources with long-term organizational goals.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <div class="text-3xl text-primary mb-3">
+                            <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg mb-2">Problem Solving</h4>
+                            <p class="text-gray-600">Applying mathematical logic and technical tools to resolve budget gaps and optimize financial workflows.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <div class="text-3xl text-primary mb-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg mb-2">Team Collaboration</h4>
+                            <p class="text-gray-600">Working effectively with teams to deliver integrated technical solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark">My Projects</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                      <img src="https://uploads.onecompiler.io/43fvf8z9y/44nxhqf89/Screenshot%202026-05-11%20015654.png" alt="E-commerce website" class="object-cover w-full h-48">
+                     </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce website</h3>
+                        <p class="text-gray-600 mb-4">A beautiful and user-friendly online beauty shop offering a wide range of skincare and cosmetic products.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                        </div>
+                        <a href="ecommerce-details.html" class="text-primary font-medium hover:text-secondary flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                                               <img src="https://uploads.onecompiler.io/43fvf8z9y/44nxhqf89/Screenshot%202026-05-11%20015511.png" alt="Tourism website" class="object-cover w-full h-48">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tourism website</h3>
+                        <p class="text-gray-600 mb-4">A responsive tourism website showcasing destinations, travel tips, and booking options to enhance user experience..</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">HTML & CSS</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Script.js</span>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Github</span>
+                        </div>
+                        <a href="tourism-details.html" class="text-primary font-medium hover:text-secondary flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <img src="https://uploads.onecompiler.io/43fvf8z9y/44nxhqf89/Screenshot%202026-04-30%20140154.png" alt="Financial Analysis Dashboard" class="object-cover w-full h-48">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Financial Analysis Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Real-government financial datasets for six months.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Excell</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">SQL</span>
+                        </div>
+                        <a href="financial Analysis Dashboard.html" class="text-primary font-medium hover:text-secondary flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-dark">Get In Touch</h2>
+            <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-10">
+            <div class="lg:w-1/2">
+                <h3 class="text-2xl font-semibold mb-6">Let's Talk About Your Project</h3>
+                <p class="text-gray-600 mb-8">
+                    Have a project in mind or want to discuss potential opportunities? 
+                    I'd love to hear about it! Reach out and let's create something amazing together.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-primary text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Location</h4>
+                            <p class="text-gray-600">Kutus, Kirinyaga</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-primary text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Email</h4>
+                            <p class="text-gray-600">paulkioko871@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-primary text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg">Phone</h4>
+                            <p class="text-gray-600">0741687214</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <h4 class="font-semibold text-lg mb-4">Follow Me</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-white p-3 rounded-full shadow hover:shadow-md transition-shadow">
+                            <i class="fab fa-github text-gray-700"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/paul-kioko-33b395353?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="bg-white p-3 rounded-full shadow hover:shadow-md transition-shadow">
+                            <i class="fab fa-linkedin-in text-gray-700"></i>
+                        </a>
+                        <a href="#" class="bg-white p-3 rounded-full shadow hover:shadow-md transition-shadow">
+                            <i class="fab fa-twitter text-gray-700"></i>
+                        </a>
+                        <a href="#" class="bg-white p-3 rounded-full shadow hover:shadow-md transition-shadow">
+                            <i class="fab fa-dribbble text-gray-700"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2">
+                <form action="https://formspree.io/f/mzdoyvgr" method="POST" class="bg-white p-8 rounded-xl shadow-lg space-y-6">
+  <div>
+    <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+      placeholder="Your full name"
+    />
+  </div>
+  <div>
+    <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+      placeholder="your.email@example.com"
+    />
+  </div>
+  <div>
+    <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+    <input
+      type="text"
+      id="subject"
+      name="subject"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+      placeholder="What do you want to discuss?"
+    />
+  </div>
+  <div>
+    <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+      placeholder="Write your message here..."
+    ></textarea>
+  </div>
+  <button
+    type="submit"
+    class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300"
+  >
+    Send Message
+  </button>
+</form>
+         </div>
+        </div>
+    </div>
+</section>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold">Portfolio<span class="text-primary">.</span></span>
+                    <p class="mt-2 text-gray-400">Creating digital experiences that matter</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/paul-kioko-33b395353?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-dribbble"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                mobileMenu.classList.add('hidden'); // Close mobile menu after clicking
+            }
+        }
+        
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-bar');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-progress');
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        skillBars.forEach(bar => {
+            observer.observe(bar);
+        });
+        
+        // Form submission handling
+         const contactForm = document.querySelector('form');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+      // Allow default submission (do NOT preventDefault)
+      // After a short delay, reset the form fields so user sees that inputs cleared
+
+      setTimeout(() => {
+        contactForm.reset();
+      }, 200);
+    });
+  }
+  
+    </script>
+</body>
+</html>
